@@ -1,0 +1,364 @@
+; #############################################################################################
+; #                                                                                           #
+; #                                                                                           #
+; #############################################################################################
+; #                                                                                           #
+; #    #######,    ,#######,     ##,         ##'         #####        ,####,    ,#####,       #
+; #    #########,  #########    ,###       ###'   ##,  ###' '##      ,##'###    ###  ##,      #
+; #   ,###    ###  #########,   ###'       ###, .####  ##' ,##'##    ##,  ##,   ####  ##      #
+; #   #####   ###  ##'  '####  ,###         #######     ##,##  ###  #########.  '######'      #
+; #   ##########'  ##,   '###  ###'        ,#####        ##,  ,###  ##########   ######,      #
+; #   ###''####'   ####, ,###  ####,      ,####           ######    ##'   '###   '##,'###,    #
+; #   ###          '########'   #######,  ####             ###      ###    "##    ###  '##,   #
+; #   #'                          ######  '##'                      '##           '##   '#'   #
+; #                                                                                           #
+; #                                                                                           #
+; #############################################################################################
+
+[colors]
+background = #e0000000
+foreground = #FFFAFA
+primary = #ffb52a
+Secondary = #e60053
+
+; Custom all module's color for foreground
+Cyan = #00acc1
+Red = #FF0000
+SandyBrown = #F4A460
+Darkcyan = #008b8b
+Darkgray = #a9a9a9
+Yellow = #fdd835
+Alert = #bd2c40
+Orange = #ffa500
+Dodgerblue = #DCDCDC
+Blue = #1e88e5
+Papayawhip = #FFEFD5
+Bisque = #FFE4C4
+Lvory1 = #FFFFF0
+Honeydew3 = #C1CDC1
+Darkred = #8B0000
+Wheat = #F5DEB3
+Tan = #D2B48C
+Grey31 = #4F4F4F
+Sienna = #A0522D
+Brown = #A52A2A
+Green = #00FF00
+
+[bar/eDP1]
+width = 100%
+height = 30
+
+background = ${colors.background}
+foreground = ${colors.foreground}
+
+; Put the bar at the bottom of the screen
+bottom = true
+
+; Prefer fixed center position for the `modules-center` block.
+; The center block will stay in the middle of the bar whenever
+; possible. It can still be pushed around if other blocks need
+; more space.
+; When false, the center block is centered in the space between
+; the left and right block.
+fixed-center = true
+
+; Background color for the tray container
+; ARGB color (e.g. #f00, #ff992a, #ddff1023)
+; By default the tray container will use the bar
+; background color.
+tray-background = ${colors.Grey31}
+
+pseudo-transparency = false
+
+line-size = 2
+line-color = #f00
+
+padding-left = 3
+padding-right = 3
+
+module-margin-left = 2
+module-margin-right = 2
+
+font-0 = Source Han Serif CN:style=Heavy;size=10
+font-1 = Iosevka Nerd Font:style=Thin;size=40
+
+modules-left = archlinux i3
+modules-center = date
+modules-right = network-wiredless backlight-acpi pulseaudio temperature battery memory cpu
+
+tray-position = right
+tray-padding = 3
+
+cursor-click = pointer
+cursor-scroll = ns-resize
+
+; Set a DPI values used when rendering text
+; This only affects scalable fonts
+; Set this to 0 to let polybar calculate the dpi from the screen size.
+; dpi =
+dpi-x = 96
+dpi-y = 96
+
+; override-redirect = true
+; wm-restack = i3
+
+[module/xwindow]
+type = internal/xwindow
+label = 﫳  %title:0:20:...%
+
+[module/i3]
+type = internal/i3
+format = <label-state> <label-mode>
+index-sort = true
+wrapping-scroll = true
+fuzzy-match = true
+
+label-mode-padding = 3
+
+; label-focused = %output% --  %icon%
+label-focused = %icon%
+label-focused-padding = 4
+label-focused-background = ${colors.background}
+label-focused-foreground = #50fa7b
+
+label-unfocused = %icon%
+label-unfocused-padding = 4
+label-unfocused-foreground= #708090
+
+label-visible = %index%
+label-visible-background = ${self.label-focused-background}
+label-visible-padding = 4
+
+label-urgent = %index%
+label-urgent-background = ${colors.Alert}
+label-urgent-padding = 4
+
+;      
+ws-icon-0 = 1;
+ws-icon-1 = 2;
+ws-icon-2 = 3;
+ws-icon-3 = 4;
+ws-icon-4 = 5;
+ws-icon-5 = 6;
+ws-icon-6 = 7;
+ws-icon-7 = 8;
+ws-icon-8 = 9;
+
+[module/xbacklight]
+type = internal/xbacklight
+output = edp-1-1
+
+enable-scroll = true
+
+format = <label>
+format-background = ${colors.background}
+
+[module/backlight-acpi]
+inherit = module/xbacklight
+type = internal/backlight
+card = intel_backlight
+
+enable-scroll = true
+
+format = <ramp>   <label>
+label = %percentage%%
+; ramp-0 = 
+; ramp-1 = 
+; ramp-2 = 
+ramp-0 = 
+ramp-1 = 
+ramp-2 = 
+ramp-3 = 
+;       
+
+[module/cpu]
+type = internal/cpu
+interval = 1
+
+format = <label> <ramp-coreload>
+format-background = ${colors.background}
+
+label =   %percentage:2%%
+
+ramp-coreload-spacing = 1
+ramp-coreload-0 = ▁
+ramp-coreload-1 = ▂
+ramp-coreload-2 = ▃
+ramp-coreload-3 = ▄
+ramp-coreload-4 = ▅
+ramp-coreload-5 = ▆
+ramp-coreload-6 = ▇
+ramp-coreload-7 = █
+
+
+[module/memory]
+type = internal/memory
+interval = 1
+format =  <label>
+format-background = ${colors.background}
+label = ﬙   %gb_used%
+
+ramp-used-0 = ▁
+ramp-used-1 = ▂
+ramp-used-2 = ▃
+ramp-used-3 = ▄
+ramp-used-4 = ▅
+ramp-used-5 = ▆
+ramp-used-6 = ▇
+ramp-used-7 = █
+ramp-used-5-foreground = ${colors.Red}
+ramp-used-6-foreground = ${colors.Red}
+ramp-used-7-foreground = ${colors.Red}
+
+[module/network-wired]
+type = internal/network
+interface = enp0s20f0u2u3
+interval = 3.0
+
+accumulate-stats = true
+
+;   
+format-connected =     <label-connected>
+label-connected = %local_ip%     %upspeed%   %downspeed%
+
+[module/network-wiredless]
+type = internal/network
+interface = wlan0
+interval = 3.0
+
+accumulate-stats = true
+unknown-as-up = true
+
+format-connected = <label-connected>
+label-connected = 直   %essid%
+
+[module/date]
+type = internal/date
+interval = 1
+
+format-background = ${colors.background}
+
+date = %Y/%m/%d
+time = %H:%M:%S
+
+label =     %date%     %time%
+
+[module/pulseaudio]
+type = internal/pulseaudio
+
+sink = alsa_output.pci-0000_00_1f.3.analog-stereo
+
+internal = 5
+
+click-right = /usr/bin/pavucontrol
+
+format-volume = <ramp-volume>  <label-volume>
+format-volume-background = ${colors.background}
+
+format-muted = ﱝ
+format-muted-underline = ${colors.Bisque}
+format-muted-background = ${colors.background}
+format-muted-foreground = ${colors.Grey31}
+
+ramp-volume-0 = 
+ramp-volume-1 = 
+ramp-volume-2 = 墳
+ramp-volume-3 = 
+
+label-volume = %percentage%%
+
+[module/alsa]
+type = internal/alsa
+
+master-soundcard = default
+
+master-mixer = Master
+
+mapped = true
+
+internal = 5
+
+format-volume = <ramp-volume> <label-volume>
+label-volume = %percentage%%
+
+format-muted = <label-muted>
+label-muted = 🔈
+
+ramp-volume-0 = 
+ramp-volume-1 = 🔉
+ramp-volume-2 = 
+ramp-volume-3 = 
+
+[module/battery]
+type = internal/battery
+battery = BAT1
+adapter = ACAD
+full-at = 98
+
+format-charging =  <animation-charging>   <label-charging>
+format-charging-underline = ${colors.Honeydew3}
+format-charging-background = ${colors.background}
+
+format-discharging = <ramp-capacity>  <label-discharging>
+format-discharging-background = ${colors.background}
+
+format-full =     FULL
+format-full-background = ${colors.background}
+format-full-foreground = ${colors.Green}
+
+ramp-capacity-7 =
+ramp-capacity-6 =
+ramp-capacity-5 =
+ramp-capacity-4 =
+ramp-capacity-3 =
+ramp-capacity-2 =
+ramp-capacity-1 =
+ramp-capacity-0 =
+ramp-capacity-0-foreground = ${colors.Red}
+ramp-capacity-1-foreground = ${colors.Red}
+
+animation-charging-6 =
+animation-charging-5 =
+animation-charging-4 =
+animation-charging-3 =
+animation-charging-2 =
+animation-charging-1 =
+animation-charging-0 =
+animation-charging-framerate = 750
+animation-charging-foreground = ${colors.Green}
+
+[module/temperature]
+type = internal/temperature
+thermal-zone = 0
+warn-temperature = 60
+internal = 0.5
+
+hwmon-path = /sys/devices/platform/coretemp.0/hwmon/hwmon6/temp1_input
+
+base-temperature = 20
+
+format = <ramp>  <label>
+format-background = ${colors.background}
+
+label = %temperature-c%
+
+ramp-0 = 
+ramp-1 = 
+ramp-2 = 
+ramp-3 = 
+ramp-4 = 
+ramp-4-foreground = ${colors.Red}
+
+[module/archlinux]
+type = custom/text
+content = 
+content-foreground = #1E90FF
+
+[settings]
+screenchange-reload = true
+
+[global/wm]
+margin-top = 0
+margin-bottom = 0
+
+; vim:ft=dosini
