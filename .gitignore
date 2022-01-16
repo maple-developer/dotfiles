@@ -1,2 +1,2 @@
-.ranger/plugins/*/.git
-.clash/log
+./ranger/plugins/*/.git
+./clash/log
