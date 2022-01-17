@@ -37,11 +37,12 @@ exec --no-startup-id cbatticon
 exec --no-startup-id batsignal
 
 exec --no-startup-id fcitx5 -d
-exec --no-startup-id /home/maple/.config/i3/scripts/wallpaper.sh
+# exec --no-startup-id /home/maple/.config/i3/scripts/wallpaper.sh
 exec --no-startup-id /home/maple/.config/polybar/launch.sh
 
 exec --no-startup-id picom --experimental-backends --config ~/.config/picom/picom.conf -b -c
 exec --no-startup-id clash -f ~/.config/clash/config.yaml > .config/clash/log
+exec --no-startup-id feh --bg-scale -Z ~/Pictures/wallpapers/wallpaper_6.jpg
 
 # Use pactl to adjust volume in PulseAudio.
 set $refresh_i3status killall -SIGUSR1 i3status
