@@ -84,7 +84,7 @@ font-1 = Iosevka Nerd Font:style=Thin;size=40
 
 modules-left = archlinux i3
 modules-center = date
-modules-right = network-wiredless backlight-acpi pulseaudio temperature battery memory cpu
+modules-right = network-wiredless pulseaudio backlight-acpi temperature memory cpu
 
 tray-position = right
 tray-padding = 3
@@ -302,7 +302,7 @@ format-charging-background = ${colors.background}
 format-discharging = <ramp-capacity>  <label-discharging>
 format-discharging-background = ${colors.background}
 
-format-full =     FULL
+format-full =     FULL
 format-full-background = ${colors.background}
 format-full-foreground = ${colors.Green}
 
