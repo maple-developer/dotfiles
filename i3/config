@@ -140,6 +140,7 @@ assign [class="Google-chrome"] $ws2
 assign [class="Chromium"] $ws2
 assign [class="firefox"] $ws2
 assign [class="jetbrains-idea-ce"] $ws3
+assign [class="jetbrains-idea"] $ws3
 assign [class="jetbrains-pycharm-ce"] $ws3
 assign [class="jetbrains-datagrip"] $ws3
 assign [class="jetbrains-clion"] $ws3
@@ -267,4 +268,4 @@ bindsym $mod+p exec $HOME/.config/rofi/powermenu/powermenu.sh
 # Applets
 bindsym $mod+a exec $HOME/.config/rofi/applets/android/apps.sh
 bindsym $mod+u exec $HOME/.config/rofi/applets/android/quicklinks.sh
-bindsym $mod+F1 exec $HOME/.config/rofi/applets/android/screenshot.sh
+bindsym $mod+F1 exec $HOME/.config/rofi/applets/android/flameshot-screenshot.sh
